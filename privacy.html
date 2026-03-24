@@ -391,12 +391,29 @@ function openCal(){
   <button onclick="openCal()" class="mobile-nav-cta">Book a Call</button>
 </div>
 
-
 <div class="sticky-cta" id="stickyCta">
   <div class="sticky-cta-text">
     <strong>Limited client spots available</strong>
     <span>Book your 30-min exploratory call</span>
   </div>
+  <button onclick="openCal()" class="sticky-cta-btn">Book a Call →</button>
+</div>
+
+
+
+<script>
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["-", namespace, ar]);}else{p(cal, ar);} return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "cal", {origin:"https://cal.com"});
+Cal.ns.cal("ui", {"theme":"dark","styles":{"branding":{"brandColor":"#c9a96e"}},"hideEventTypeDetails":false,"layout":"month_view"});
+
+function openCal(){
+  Cal.ns.cal("modal", {
+    calLink: "jake-lubrano-cw7yuu/30min",
+    config: {"layout":"month_view"}
+  });
+}
+</script>
+
 
 <div id="privacy" class="page pt">
   <div class="ph">
@@ -466,53 +483,32 @@ function openCal(){
   <footer style="border-top:1px solid var(--border);padding:24px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;background:var(--black);">
     <div class="f-logo"><img src="" alt="Levante Marketing" style="height:28px;opacity:.5;filter:brightness(10);"></div>
     <div class="f-copy" style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;">
-      <span onclick="show('privacy')" style="cursor:pointer;color:rgba(255,255,255,.3);font-size:11px;text-decoration:underline;text-underline-offset:3px;">Privacy Policy</span>
+      <span onclick="window.location.href='/privacy'" style="cursor:pointer;color:rgba(255,255,255,.3);font-size:11px;text-decoration:underline;text-underline-offset:3px;">Privacy Policy</span>
       <span>© 2025 Levante Marketing Pty Ltd</span>
     </div>
   </footer>
 </div>
 
 <script>
-(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["-", namespace, ar]);}else{p(cal, ar);} return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init", "cal", {origin:"https://cal.com"});
-Cal.ns.cal("ui", {"theme":"dark","styles":{"branding":{"brandColor":"#c9a96e"}},"hideEventTypeDetails":false,"layout":"month_view"});
-
-function openCal(){
-  Cal.ns.cal("modal", {
-    calLink: "jake-lubrano-cw7yuu/30min",
-    config: {"layout":"month_view"}
-  });
-}
-</script>
-<script>
 function toggleMenu(){
-  var ham = document.getElementById('hamburger');
-  var menu = document.getElementById('mobileNav');
-  if(!ham || !menu) return;
+  var ham=document.getElementById('hamburger');
+  var menu=document.getElementById('mobileNav');
+  if(!ham||!menu)return;
   ham.classList.toggle('open');
   menu.classList.toggle('open');
-  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-}
-function toBook(){
-  var el = document.getElementById('booking');
-  if(el) el.scrollIntoView({behavior:'smooth'});
+  document.body.style.overflow=menu.classList.contains('open')?'hidden':'';
 }
 function openCal(){
-  if(typeof Cal !== 'undefined') {
-    Cal.ns.cal("modal", {calLink:"jake-lubrano-cw7yuu/30min",config:{"layout":"month_view"}});
-  }
+  if(typeof Cal!=='undefined'){Cal.ns.cal("modal",{calLink:"jake-lubrano-cw7yuu/30min",config:{"layout":"month_view"}});}
 }
-var stickyCta = document.getElementById('stickyCta');
+var stickyCta=document.getElementById('stickyCta');
 function handleScroll(){
-  var heroEl = document.querySelector('.hero');
-  var heroH = heroEl ? heroEl.offsetHeight : 600;
-  var scrollY = window.pageYOffset || document.documentElement.scrollTop;
-  if(scrollY > heroH * 0.55 && stickyCta){
-    stickyCta.classList.add('visible');
-    document.body.style.paddingBottom = '80px';
-  }
+  var heroEl=document.querySelector('.hero');
+  var heroH=heroEl?heroEl.offsetHeight:600;
+  var scrollY=window.pageYOffset||document.documentElement.scrollTop;
+  if(scrollY>heroH*0.55&&stickyCta){stickyCta.classList.add('visible');document.body.style.paddingBottom='80px';}
 }
-window.addEventListener('scroll', handleScroll, {passive:true});
+window.addEventListener('scroll',handleScroll,{passive:true});
 handleScroll();
 </script>
 </body>
