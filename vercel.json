@@ -1,0 +1,13 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "routes": [
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/about", "dest": "/about.html" },
+    { "src": "/realestate", "dest": "/realestate.html" },
+    { "src": "/trades", "dest": "/trades.html" },
+    { "src": "/ecommerce", "dest": "/ecommerce.html" },
+    { "src": "/privacy", "dest": "/privacy.html" },
+    { "src": "/privacy-policy", "dest": "/privacy.html" }
+  ]
+}
